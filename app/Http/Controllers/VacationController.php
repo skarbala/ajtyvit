@@ -111,4 +111,8 @@ class VacationController extends Controller
     public static function getVacationOfCustomer(){
         return DB::table('vacations')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->limit(5)->get();
     }
+
+    public function list(){
+        return view('all_vacations')->with('vacations',Vacation::all());
+    }
 }

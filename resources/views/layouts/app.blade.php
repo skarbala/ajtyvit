@@ -55,7 +55,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{url('new_vacation')}}">nova ziadost o dovolenku</a></li>
-                    <li><a href="">vsetky ziadosti</a></li>
+                    <li><a href="{{url('allvacations')}}">vsetky ziadosti</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

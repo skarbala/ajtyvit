@@ -32,6 +32,8 @@ Route::post('/new_vacation', 'VacationController@store')->middleware('auth');
 
 Auth::routes();
 
+Route::get('/allvacations','VacationController@list')->middleware('auth');
+
 Route::get('/home', 'HomeController@index');
 
 Route::get('debug', function () {
