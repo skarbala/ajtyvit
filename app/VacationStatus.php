@@ -12,4 +12,5 @@ class VacationStatus extends Model
     {
         return $this->belongsToMany('App\Vacation');
     }
+
 }

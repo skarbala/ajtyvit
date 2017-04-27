@@ -18,8 +18,7 @@
                             <td>{{$vacation->vacation_from}}</td>
                             <td>{{$vacation->vacation_to}}</td>
                             <td>{{$vacation->days_of_vacation}}</td>
-                            <td>{{$vacation->status}}</td>
-                           {{var_dump($vacation->status())}}
+                            <td>{{$vacation->status->description}}</td>
                         </tr>
                     @endforeach
                     </tbody>
