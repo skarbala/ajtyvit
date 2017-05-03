@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-6 col-md-offset-4">
+    <div class="col-md-8 col-md-offset-4">
         <form action="" class="form-horizontal">
-        <h3>Detail dovolenky</h3>
+        <h4>Detail dovolenky</h4>
+        <hr>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Dovolenka od</label>
-                <p class="form-control-static">
-                    {{$vacation->vacation_from}}
-                </p>
+                <input type="email" class="form-control disabled" id="disabledInput"
+                value=" {{$vacation->vacation_from}}" disabled>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Dovolenka do</label>

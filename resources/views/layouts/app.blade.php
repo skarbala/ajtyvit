@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
-
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/ico" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -21,13 +21,30 @@
         ]) !!};
     </script>
     <style>
-        a.navbar-brand {
+        .navbar-default a.navbar-brand {
             font-size: 30px;
+            color: #be1968;
         }
 
-        li:hover {
-            background-color: #1b6d85;
+         .navbar-default a.navbar-brand:hover {
+            color: #002060;
         }
+
+
+        .navbar-default{
+            background-color: #fff;
+
+        }
+        .navbar-default .navbar-nav>li>a{
+            color: #cd2c77;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .navbar-default .navbar-nav>li>a:hover{
+            color: #002060;
+        }
+
     </style>
 </head>
 <body>
