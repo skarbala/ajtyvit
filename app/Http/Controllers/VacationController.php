@@ -55,11 +55,11 @@ class VacationController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        return view('vacation_detail')->with('vacation',Vacation::find($id));
     }
 
     /**
@@ -108,11 +108,12 @@ class VacationController extends Controller
         return Carbon::parse($vacation_to)->diffInDays(Carbon::parse($vacation_from));
     }
 
-    public static function getVacationOfCustomer(){
-        return DB::table('vacations')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->limit(5)->get();
+    public static function getAll(){
+        return Vacation::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
     }
 
     public function list(){
-        return view('all_vacations')->with('vacations',Vacation::all());
+        return view('all_vacations')->with('vacations',VacationController::getAll());
     }
+
 }

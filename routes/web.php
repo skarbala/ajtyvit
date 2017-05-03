@@ -13,11 +13,11 @@
 
 
 use App\Http\Controllers\VacationController;
-use App\Title;
+use App\Vacation;
 
 Route::get('/', function () {
     if (Auth::user()) {
-        return view('home')->with('vacations', Auth::user()->vacation()->get());
+        return view('home')->with('vacations', VacationController::getAll());
     }
     return view('welcome');
 });
@@ -32,7 +32,7 @@ Route::post('/new_vacation', 'VacationController@store')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/allvacations','VacationController@list')->middleware('auth');
+Route::get('/allvacations', 'VacationController@list')->middleware('auth');
 
 Route::get('/home', 'HomeController@index');
 
@@ -40,3 +40,5 @@ Route::get('debug', function () {
     $provider = \Michalmanko\Holiday\HolidayFactory::createProvider('SK');
     return $holidays = $provider->getHolidays(new \DateTime('2017-05-01'));
 });
+
+Route::get('vacation_detail/{id}', ['uses' =>'VacationController@show']);
