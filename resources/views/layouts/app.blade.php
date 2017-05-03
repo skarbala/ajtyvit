@@ -41,8 +41,14 @@
             text-transform: uppercase;
         }
 
-        .navbar-default .navbar-nav>li>a:hover{
+        .navbar-default .navbar-nav>li>a:hover, tbody a:hover{
+            text-decoration: none;
             color: #002060;
+        }
+
+        tbody a{
+            color: #cd2c77;
+            font-weight: 600;
         }
 
     </style>
@@ -64,15 +70,15 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}" style="font-family:'Shadows Into Light Two'">
-                    Dovolenkovac
+                    Dovolenkovač
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{url('new_vacation')}}">nova ziadost o dovolenku</a></li>
-                    <li><a href="{{url('allvacations')}}">vsetky ziadosti</a></li>
+                    <li><a href="{{url('new_vacation')}}">Nová žiadosť</a></li>
+                    <li><a href="{{url('allvacations')}}">moje žiadosti</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -96,7 +102,7 @@
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                odhlasit sa
+                                odhlásiť sa
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

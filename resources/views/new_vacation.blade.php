@@ -1,18 +1,16 @@
 @extends('layouts.app')
 @section('title')
-    | Nova ziadost
+    | Nova žiadosť
 @endsection
 @section('content')
     <div class="container">
         <div class="row">
+        <h3 class="text-center" style="margin-bottom: 40px">Nová žiadosť</h3>
             <div class="col-md-7 col-md-offset-2">
-                <h1 style="text-align: center">nova ziadza</h1>
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('new_vacation') }}">
                     {{ csrf_field() }}
-
                     <div class="form-group{{ $errors->has('vacation_from') ? ' has-error' : '' }}">
-                        <label for="birthdate" class="col-md-4 control-label">Zaciatok dovolenky</label>
-
+                        <label for="birthdate" class="col-md-4 control-label">Začiatok dovolenky</label>
                         <div class="col-md-6">
                             <input id="birthdate" type="date" class="form-control" name="vacation_from"
                                    value="{{ old('vacation_from') }}"
