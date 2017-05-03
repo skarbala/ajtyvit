@@ -44,7 +44,7 @@ class User extends Authenticatable
     }
 
     public function getDaysOfVacationUsed(){
-        return Auth::user()->vacation()->sum('days_of_vacation');
+        return Auth::user()->vacation()->whereIn('status_id',[1,2])->sum('days_of_vacation');
     }
     /**
      * The attributes that should be hidden for arrays.
