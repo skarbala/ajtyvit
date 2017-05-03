@@ -36,15 +36,19 @@ class User extends Authenticatable
         return $this->hasMany('App\Vacation');
     }
 
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
+
 
     public function getDaysOfVacationLeft(){
-        $initialDaysOfVacation = User::getInitialDaysOfVacation(Auth::user()->birthdate);
-        $daysOfVacationLeft = $initialDaysOfVacation-Auth::user()->getDaysOfVacationUsed();
+        $initialDaysOfVacation = User::getInitialDaysOfVacation($this->birthdate);
+        $daysOfVacationLeft = $initialDaysOfVacation-$this->getDaysOfVacationUsed();
         return $daysOfVacationLeft;
     }
 
     public function getDaysOfVacationUsed(){
-        return Auth::user()->vacation()->whereIn('status_id',[1,2])->sum('days_of_vacation');
+        return $this->vacation()->whereIn('status_id',[1,2])->sum('days_of_vacation');
     }
     /**
      * The attributes that should be hidden for arrays.
@@ -63,4 +67,15 @@ class User extends Authenticatable
         return 20;
     }
 
+    public function isAdmin()
+    {
+        foreach ($this->role()->get() as $role)
+        {
+            if ($role->role == 'ADMIN')
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

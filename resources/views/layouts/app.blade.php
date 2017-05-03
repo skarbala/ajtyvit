@@ -68,7 +68,10 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                prihlaseny :{{ Auth::user()->name }}
+                                {{ Auth::user()->name}}
+                                @if(Auth::user()->isAdmin())
+                                    <span>admin</span>
+                                @endif
                             </a>
 
                         {{--<ul class="dropdown-menu" role="menu">--}}
