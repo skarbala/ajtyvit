@@ -27,6 +27,22 @@
                 <p class="form-control-static">{{$vacation->status->description}}</p>
             </div>
         </div>
+
+        @if ($vacation->isSubmitted())
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <a class="btn btn-danger btn-block" href="{{ url('/') }}">stornovať žiadosť</a>
+            </div>
+        </div>
+        @endif
+
+        @if (Auth::user()->isAdmin() && $vacation->isSubmitted())
+         <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <a class="btn btn-success btn-block" href="{{ url('/') }}">schváliť žiadosť</a>
+            </div>
+        </div>
+        @endif
     </form>
 </div>
 @stop

@@ -21,4 +21,7 @@ class Vacation extends Model
     public function status(){
         return $this->belongsTo('App\VacationStatus');
     }
+    public function isSubmitted(){
+        return $this->status_id == 1;
+    }
 }
