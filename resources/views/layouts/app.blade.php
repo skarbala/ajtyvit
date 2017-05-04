@@ -13,6 +13,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 
     <!-- Scripts -->
     <script>
@@ -58,8 +61,5 @@
     @include('partials.navigation')
     @yield('content')
 </div>
-
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-</body>
+@yield('script')
 </html>

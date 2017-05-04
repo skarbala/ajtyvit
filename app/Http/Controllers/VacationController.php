@@ -96,6 +96,12 @@ class VacationController extends Controller
         //
     }
 
+    public function cancelVacation($id)
+    {
+        $vacation = Vacation::find($id);
+        $vacation->cancelVacation();
+        return view('home');
+       }
     /**
      * @param $vacation_from
      * @param $vacation_to

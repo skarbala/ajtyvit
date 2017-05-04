@@ -24,4 +24,8 @@ class Vacation extends Model
     public function isSubmitted(){
         return $this->status_id == 1;
     }
+
+    public function cancelVacation(){
+        return $this->update(['status_id'=>3]);
+    }
 }
