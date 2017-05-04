@@ -100,7 +100,8 @@ class VacationController extends Controller
     {
         $vacation = Vacation::find($id);
         $vacation->cancelVacation();
-        return view('home');
+        flash('Message')->overlay();
+        return redirect('/')->with('vacations', VacationController::getAll());
        }
     /**
      * @param $vacation_from
