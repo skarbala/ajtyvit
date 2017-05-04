@@ -6,7 +6,6 @@ use App\Vacation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class VacationController extends Controller
 {
@@ -37,14 +36,14 @@ class VacationController extends Controller
             'vacation_to' => 'required|after:vacation_from',
         ]);
 
-        if ($vacationDays > Auth::user()->getDaysOfVacationLeft()){
-            return redirect('/new_vacation')->withErrors(['msg'=>'mas malo dovolenky']);
+        if ($vacationDays > Auth::user()->getDaysOfVacationLeft()) {
+            return redirect('/new_vacation')->withErrors(['msg' => 'mas malo dovolenky']);
         }
         Vacation::create([
             'vacation_from' => $request['vacation_from'],
             'vacation_to' => $request['vacation_to'],
             'user_id' => Auth::user()->id,
-            'days_of_vacation' => $this->countDaysOfVacation($request['vacation_from'],$request['vacation_to']),
+            'days_of_vacation' => $this->countDaysOfVacation($request['vacation_from'], $request['vacation_to']),
             'status_id' => 1,
         ]);
         return redirect()->action('HomeController@index');
@@ -59,7 +58,7 @@ class VacationController extends Controller
      */
     public function show($id)
     {
-        return view('vacation_detail')->with('vacation',Vacation::find($id));
+        return view('vacation_detail')->with('vacation', Vacation::find($id));
     }
 
     /**
@@ -100,27 +99,40 @@ class VacationController extends Controller
     {
         $vacation = Vacation::find($id);
         $vacation->cancelVacation();
-        flash('Message')->overlay();
+        flash('Dovolenka uspesne zamietnuta')->success();
         return redirect('/')->with('vacations', VacationController::getAll());
-       }
+    }
+
+    public function confirmVacation($id)
+    {
+        $vacation = Vacation::find($id);
+        $vacation->confirmVacation();
+        flash('Dovolenka uspesne schvalena')->success();
+        return redirect('/')->with('vacations', VacationController::getAll());
+    }
+
+
     /**
      * @param $vacation_from
      * @param $vacation_to
      * @return int
      */
-    public function countDaysOfVacation($vacation_from, $vacation_to){
-        if ($vacation_from == $vacation_to){
+    public function countDaysOfVacation($vacation_from, $vacation_to)
+    {
+        if ($vacation_from == $vacation_to) {
             return 1;
         }
         return Carbon::parse($vacation_to)->diffInDays(Carbon::parse($vacation_from));
     }
 
-    public static function getAll(){
+    public static function getAll()
+    {
         return Vacation::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
     }
 
-    public function list(){
-        return view('all_vacations')->with('vacations',VacationController::getAll());
+    public function list()
+    {
+        return view('all_vacations')->with('vacations', VacationController::getAll());
     }
 
 }

@@ -1,6 +1,8 @@
 @extends('layouts.app') @section('content')
     <div class="container">
-        @include('flash::message')
+        <div style="z-index: 1000; position: absolute" class="col-sm-8 text-center">
+            @include('flash::message')
+        </div>
         <div class="row" style="margin-top: 30px">
             <div class="col-md-5 col-md-offset-1">
                 @if ($vacations->isEmpty())
@@ -17,9 +19,10 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('script')
     <script>
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+        $('div.alert').not('.alert-important').delay(1000).fadeOut(350);
     </script>
 @endsection
