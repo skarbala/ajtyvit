@@ -28,6 +28,14 @@
             </div>
         </div>
 
+        @if (Auth::user()->isAdmin() && $vacation->isSubmitted())
+         <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <a class="btn btn-success btn-block" href="{{ url('/') }}">schváliť žiadosť</a>
+            </div>
+        </div>
+        @endif
+
         @if ($vacation->isSubmitted())
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
@@ -36,13 +44,6 @@
         </div>
         @endif
 
-        @if (Auth::user()->isAdmin() && $vacation->isSubmitted())
-         <div class="form-group">
-            <div class="col-md-6 col-md-offset-4">
-                <a class="btn btn-success btn-block" href="{{ url('/') }}">schváliť žiadosť</a>
-            </div>
-        </div>
-        @endif
     </form>
 </div>
 @stop
