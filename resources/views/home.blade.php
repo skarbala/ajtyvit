@@ -1,11 +1,12 @@
 @extends('layouts.app') @section('content')
 <div class="container">
-<div class="row">
+
+<div class="row" style="margin-top: 30px">
     <div class="col-md-5 col-md-offset-1">
         @if ($vacations->isEmpty())
-            <h4>Zatiaľ nemáš žiadnu žiadosť</h4>
+            <h4 style="margin-top: 0px">Zatiaľ nemáš žiadnu žiadosť</h4>
         @else
-            <h4 style="margin-bottom: 20px">Najnovšie žiadosti o dovolenku</h4>
+            <h4 style="margin-bottom: 20px;margin-top: 0px">Najnovšie žiadosti o dovolenku</h4>
             @include('partials.vacation_table', ['vacations' => $vacations])
         @endif
     </div>
