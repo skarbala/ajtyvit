@@ -17,7 +17,7 @@ class VacationController extends Controller
      */
     public function index()
     {
-        return view('new_vacation');
+        return view('vacation.create');
     }
 
 
@@ -58,7 +58,7 @@ class VacationController extends Controller
      */
     public function show($id)
     {
-        return view('vacation_detail')->with('vacation', Vacation::find($id));
+        return view('vacation.detail')->with('vacation', Vacation::find($id));
     }
 
     /**
@@ -84,16 +84,6 @@ class VacationController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     public function cancelVacation($id)
     {
@@ -128,7 +118,7 @@ class VacationController extends Controller
 
     public function list()
     {
-        return view('all_vacations')->with('vacations',Auth::user()->getVacations());
+        return view('vacation.list')->with('vacations',Auth::user()->getVacations());
     }
 
 }

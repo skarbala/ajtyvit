@@ -73,8 +73,8 @@
             </form>
         @endif
     </div>
-    @include('partials.cancel_vacation_modal')
-    @include('partials.confirm_vacation_modal')
+    @include('vacation.modal.cancel')
+    @include('vacation.modal.confirm')
 @endsection
 @section('script')
     <script src="{{ asset('js/app.js') }}"></script>

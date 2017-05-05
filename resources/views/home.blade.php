@@ -9,7 +9,7 @@
                     <h4 style="margin-top: 0px">Zatiaľ nemáš žiadnu žiadosť</h4>
                 @else
                     <h4 style="margin-bottom: 20px;margin-top: 0px">Najnovšie žiadosti o dovolenku</h4>
-                    @include('partials.vacation_table', ['vacations' => $vacations])
+                    @include('partials.vacation.table', ['vacations' => $vacations])
                 @endif
             </div>
             <div class="col-md-5" style="text-align: center">
