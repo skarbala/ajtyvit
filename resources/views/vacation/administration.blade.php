@@ -3,65 +3,69 @@
     | Nova žiadosť
 @endsection
 @section('content')
+    <div class="container">
+        <div style="z-index: 1000; position: absolute" class="col-sm-8 text-center">
+            @include('flash::message')
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <table class="table">
+                <thead>
+                <th>Meno</th>
+                <th>Od</th>
+                <th>do</th>
+                <th>pocet dni</th>
+                <th>stav</th>
+                <th></th>
+                </thead>
+                <tbody>
+                @foreach($vacations as $vacation)
+                    <tr>
+                        <td>{{$vacation->user->name .' '. $vacation->user->surname}}</td>
+                        <td>{{$vacation->vacation_from}}</td>
+                        <td>{{$vacation->vacation_to}}</td>
+                        <td>{{$vacation->days_of_vacation}}</td>
+                        <td>{{$vacation->status->description}}</td>
+                        <td>
+                            <form
+                                    method="POST"
+                                    action="{{ url('confirmVacation', $vacation->id) }}"
+                                    accept-charset="UTF-8"
+                            >
+                                {{ csrf_field() }}
 
-    <div class="col-md-6 col-md-offset-3">
-        <table class="table">
-            <thead>
-            <th>Meno</th>
-            <th>Od</th>
-            <th>do</th>
-            <th>pocet dni</th>
-            <th>stav</th>
-            <th></th>
-            </thead>
-            <tbody>
-            @foreach($vacations as $vacation)
-                <tr>
-                    <td>{{$vacation->user->name .' '. $vacation->user->surname}}</td>
-                    <td>{{$vacation->vacation_from}}</td>
-                    <td>{{$vacation->vacation_to}}</td>
-                    <td>{{$vacation->days_of_vacation}}</td>
-                    <td>{{$vacation->status->description}}</td>
-                    <td>
-                        <form
-                                method="POST"
-                                action="{{ url('confirmVacation', $vacation->id) }}"
-                                accept-charset="UTF-8"
-                        >
-                            {{ csrf_field() }}
+                                <a class="btn btn-success"
+                                   type="button"
+                                   data-toggle="modal"
+                                   data-target="#confirmVacation"
+                                   data-title="Delete User"
+                                   data-message="Naozaj stornovat ziadost ?">
+                                    schvalit
+                                </a>
 
-                            <a class="btn btn-success"
-                               type="button"
-                               data-toggle="modal"
-                               data-target="#confirmVacation"
-                               data-title="Delete User"
-                               data-message="Naozaj stornovat ziadost ?">
-                                schvalit
-                            </a>
+                            </form>
+                            <form
+                                    method="POST"
+                                    action="{{ url('declineVacation', $vacation->id) }}"
+                                    accept-charset="UTF-8"
+                            >
+                                {{ csrf_field() }}
 
-                        </form>
-                        <form
-                                method="POST"
-                                action="{{ url('declineVacation', $vacation->id) }}"
-                                accept-charset="UTF-8"
-                        >
-                            {{ csrf_field() }}
+                                <a class="btn btn-danger"
+                                   type="button"
+                                   data-toggle="modal"
+                                   data-target="#confirmDecline"
+                                   data-title="Delete User"
+                                   data-message="Naozaj stornovat ziadost ?">
+                                    zamietnut
+                                </a>
 
-                            <a class="btn btn-danger"
-                               type="button"
-                               data-toggle="modal"
-                               data-target="#confirmDecline"
-                               data-title="Delete User"
-                               data-message="Naozaj stornovat ziadost ?">
-                                zamietnut
-                            </a>
-
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     <style>
         /*.table > tbody > tr > td {*/
@@ -114,6 +118,8 @@
         $('#confirmCancel').find('.modal-footer #confirmCancel').on('click', function () {
             $(this).data('form').submit();
         });
+        $('div.alert').not('.alert-important').delay(1000).fadeOut(350);
     </script>
+
 
 @endsection

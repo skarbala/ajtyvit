@@ -6,6 +6,7 @@ use App\Vacation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class VacationController extends Controller
 {
@@ -94,6 +95,9 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->cancelVacation();
         flash('Dovolenka uspesne zamietnuta')->success();
+        if (ends_with(URL::previous(), "vacation_administration")) {
+            return $this->admin();
+        }
         return redirect('/')->with('vacations', Auth::user()->getVacations());
     }
 
@@ -102,7 +106,11 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->confirmVacation();
         flash('Dovolenka uspesne schvalena')->success();
+        if (ends_with(URL::previous(), "vacation_administration")) {
+            return $this->admin();
+        }
         return redirect('/')->with('vacations', Auth::user()->getVacations());
+
     }
 
     public function cancelVacation($id)
@@ -126,9 +134,10 @@ class VacationController extends Controller
         return Carbon::parse($vacation_to)->diffInDays(Carbon::parse($vacation_from));
     }
 
-    public function admin(){
+    public function admin()
+    {
         $vacation = new Vacation();
-        return view('vacation.administration')->with('vacations',$vacation->getSubmittedVacations());
+        return view('vacation.administration')->with('vacations', $vacation->getSubmittedVacations());
     }
 
 }
