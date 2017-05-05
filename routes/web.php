@@ -26,13 +26,13 @@ Route::get('/welcomeNewUser', function () {
     return view('auth.welcomeNew');
 })->middleware('auth');
 
-Route::get('/new_vacation', 'VacationController@index')->middleware('auth');
+Route::get('/new_vacation', 'VacationController@create')->middleware('auth');
 
 Route::post('/new_vacation', 'VacationController@store')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/allvacations', 'VacationController@list')->middleware('auth');
+Route::get('/all_vacations', 'VacationController@index')->middleware('auth');
 
 Route::get('/home', 'HomeController@index');
 

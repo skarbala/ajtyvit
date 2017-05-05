@@ -17,9 +17,13 @@ class VacationController extends Controller
      */
     public function index()
     {
-        return view('vacation.create');
+        return view('vacation.list')->with('vacations', Auth::user()->getVacations());
     }
 
+    public function create()
+    {
+        return view('vacation.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -101,7 +105,6 @@ class VacationController extends Controller
         return redirect('/')->with('vacations', Auth::user()->getVacations());
     }
 
-
     /**
      * @param $vacation_from
      * @param $vacation_to
@@ -115,10 +118,5 @@ class VacationController extends Controller
         return Carbon::parse($vacation_to)->diffInDays(Carbon::parse($vacation_from));
     }
 
-
-    public function list()
-    {
-        return view('vacation.list')->with('vacations',Auth::user()->getVacations());
-    }
 
 }

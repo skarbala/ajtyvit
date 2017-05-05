@@ -21,7 +21,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li><a href="{{url('new_vacation')}}">Nová žiadosť</a></li>
-                <li><a href="{{url('allvacations')}}">moje žiadosti</a></li>
+                <li><a href="{{url('all_vacations')}}">moje žiadosti</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
