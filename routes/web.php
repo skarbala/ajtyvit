@@ -43,5 +43,5 @@ Route::get('debug', function () {
 
 Route::get('vacation_detail/{id}', ['uses' =>'VacationController@show']);
 
-Route::post('cancelVacation/{id}','VacationController@cancelVacation' );
+Route::post('declineVacation/{id}','VacationController@cancelVacation' );
 Route::post('confirmVacation/{id}','VacationController@confirmVacation' );
