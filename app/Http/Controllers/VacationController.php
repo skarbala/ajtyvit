@@ -89,7 +89,7 @@ class VacationController extends Controller
     }
 
 
-    public function cancelVacation($id)
+    public function declineVacation($id)
     {
         $vacation = Vacation::find($id);
         $vacation->cancelVacation();
@@ -102,6 +102,14 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->confirmVacation();
         flash('Dovolenka uspesne schvalena')->success();
+        return redirect('/')->with('vacations', Auth::user()->getVacations());
+    }
+
+    public function cancelVacation($id)
+    {
+        $vacation = Vacation::find($id);
+        $vacation->cancelVacation();
+        flash('Dovolenka uspesne stornovana')->success();
         return redirect('/')->with('vacations', Auth::user()->getVacations());
     }
 

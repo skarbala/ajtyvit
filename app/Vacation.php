@@ -25,11 +25,14 @@ class Vacation extends Model
         return $this->status_id == 1;
     }
 
-    public function cancelVacation(){
+    public function declineVacation(){
         return $this->update(['status_id'=>3]);
     }
 
     public function confirmVacation(){
         return $this->update(['status_id'=>2]);
+    }
+    public function cancelVacation(){
+        return $this->update(['status_id'=>4]);
     }
 }

@@ -37,6 +37,11 @@ class Addvacationstatus extends Migration
                     'description' => 'zamietnuta',
                     'status' => 'DECLINED',
                 ),
+                array(
+                    'id'=>'4',
+                    'description' => 'stornovana',
+                    'status' => 'CANCELED',
+                ),
             )
         );
     }
