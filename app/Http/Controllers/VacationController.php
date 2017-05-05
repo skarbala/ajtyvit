@@ -126,5 +126,9 @@ class VacationController extends Controller
         return Carbon::parse($vacation_to)->diffInDays(Carbon::parse($vacation_from));
     }
 
+    public function admin(){
+        $vacation = new Vacation();
+        return view('vacation.administration')->with('vacations',$vacation->getSubmittedVacations());
+    }
 
 }

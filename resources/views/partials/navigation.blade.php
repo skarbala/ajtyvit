@@ -22,6 +22,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{url('new_vacation')}}">Nová žiadosť</a></li>
                 <li><a href="{{url('all_vacations')}}">moje žiadosti</a></li>
+                @if(Auth::user()->isAdmin())
+                    <li><a href="{{url('vacation_administration')}}">ziadosti na schvalenie</a></li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -34,9 +37,6 @@
                     <li class="dropdown">
                         <a href="">
                             {{ Auth::user()->name}}
-                            @if(Auth::user()->isAdmin())
-                                <span>admin</span>
-                            @endif
                         </a>
 
                     {{--<ul class="dropdown-menu" role="menu">--}}
