@@ -53,7 +53,19 @@
             color: #cd2c77;
             font-weight: 600;
         }
+        .table > tbody > tr > td {
+            vertical-align: middle;
+            text-align: center;
 
+        }
+
+        /*form {*/
+            /*display: inline-block;*/
+        /*}*/
+
+        .table > thead > tr > th {
+            text-align: center;
+        }
 
     </style>
 </head>

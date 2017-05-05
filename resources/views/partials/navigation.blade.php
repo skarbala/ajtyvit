@@ -23,7 +23,8 @@
                 <li><a href="{{url('new_vacation')}}">Nová žiadosť</a></li>
                 <li><a href="{{url('all_vacations')}}">moje žiadosti</a></li>
                 @if(Auth::user()->isAdmin())
-                    <li><a href="{{url('vacation_administration')}}">ziadosti na schvalenie</a></li>
+                    <li><a href="{{url('vacation_administration')}}">ziadosti na schvalenie</a>
+                    </li>
                 @endif
             </ul>
 
