@@ -100,7 +100,7 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->cancelVacation();
         flash('Dovolenka uspesne zamietnuta')->success();
-        return redirect('/')->with('vacations', VacationController::getAll());
+        return redirect('/')->with('vacations', Auth::user()->getVacations());
     }
 
     public function confirmVacation($id)
@@ -108,7 +108,7 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->confirmVacation();
         flash('Dovolenka uspesne schvalena')->success();
-        return redirect('/')->with('vacations', VacationController::getAll());
+        return redirect('/')->with('vacations', Auth::user()->getVacations());
     }
 
 
@@ -125,14 +125,10 @@ class VacationController extends Controller
         return Carbon::parse($vacation_to)->diffInDays(Carbon::parse($vacation_from));
     }
 
-    public static function getAll()
-    {
-        return Vacation::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
-    }
 
     public function list()
     {
-        return view('all_vacations')->with('vacations', VacationController::getAll());
+        return view('all_vacations')->with('vacations',Auth::user()->getVacations());
     }
 
 }

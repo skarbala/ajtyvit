@@ -78,4 +78,8 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function getVacations(){
+        return $this->vacation()->orderBy('id', 'desc')->get();
+    }
 }
