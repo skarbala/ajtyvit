@@ -43,8 +43,8 @@ Route::get('debug', function () {
 
 Route::get('vacation_detail/{id}', ['uses' =>'VacationController@show']);
 
-Route::post('declineVacation/{id}','VacationController@declineVacation' );
-Route::post('confirmVacation/{id}','VacationController@confirmVacation' );
+Route::post('declineVacation/{id}','VacationController@declineVacation' )->middleware('admin');
+Route::post('confirmVacation/{id}','VacationController@confirmVacation' )->middleware('admin');
 Route::post('cancelVacation/{id}','VacationController@cancelVacation' );
 
-Route::get('/vacation_administration','VacationController@admin');
+Route::get('/vacation_administration','VacationController@admin')->middleware('admin');
