@@ -1,6 +1,6 @@
 @extends('layouts.app') @section('content')
     <div class="container">
-        <div style="z-index: 1000; position: absolute" class="col-sm-8 text-center">
+       <div style="z-index: 1000; position: absolute" class="col-md-8 text-center col-md-offset-1">
             @include('flash::message')
         </div>
         <h4 class="text-center">Detail dovolenky</h4>

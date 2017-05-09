@@ -86,4 +86,9 @@ class User extends Authenticatable
     public function getVacations(){
         return $this->vacation()->orderBy('id', 'desc')->get();
     }
+
+    public function getLastVacations(){
+        return $this->vacation()->orderBy('id', 'desc')->limit(5)->get();
+    }
+
 }

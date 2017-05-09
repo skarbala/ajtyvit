@@ -12,7 +12,7 @@
         "laravel/tinker": "~1.0",
         "michalmanko/php-library-holiday": "~1.1.0",
         "nesbot/carbon": "~1.18",
-        "nuxia/business-day-manipulator": "^0.1.0"
+        "nuxia/business-day-manipulator": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

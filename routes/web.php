@@ -17,7 +17,7 @@ use App\Vacation;
 
 Route::get('/', function () {
     if (Auth::user()) {
-        return view('home')->with('vacations', Auth::user()->getVacations());
+        return view('home')->with('vacations', Auth::user()->getLastVacations());
     }
     return view('welcome');
 });
