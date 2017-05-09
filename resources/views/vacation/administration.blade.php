@@ -68,19 +68,10 @@
         </div>
     </div>
     <style>
-        /*.table > tbody > tr > td {*/
-        /*vertical-align: middle;*/
-        /*text-align: center;*/
-
-        /*}*/
-
         form {
             display: inline-block;
         }
 
-        /*.table > thead > tr > th {*/
-        /*text-align: center;*/
-        /*}*/
     </style>
     @include('vacation.modal.decline')
     @include('vacation.modal.confirm')
@@ -88,38 +79,7 @@
 
 @section('script')
     <script type="text/javascript">
-        $('#confirmVacation').on('show.bs.modal', function (e) {
-            // Pass form reference to modal for submission on yes/ok
-            var form = $(e.relatedTarget).closest('form');
-            $(this).find('.modal-footer #confirmVacation').data('form', form);
-        });
-        <!-- Form confirm (yes/ok) handler, submits form -->
-        $('#confirmVacation').find('.modal-footer #confirmVacation').on('click', function () {
-            $(this).data('form').submit();
-        });
-        $('#confirmDecline').on('show.bs.modal', function (e) {
-            // Pass form reference to modal for submission on yes/ok
-            var form = $(e.relatedTarget).closest('form');
-            $(this).find('.modal-footer #confirmDecline').data('form', form);
-        });
-
-        <!-- Form confirm (yes/ok) handler, submits form -->
-        $('#confirmDecline').find('.modal-footer #confirmDecline').on('click', function () {
-            $(this).data('form').submit();
-        });
-
-        $('#confirmCancel').on('show.bs.modal', function (e) {
-
-            // Pass form reference to modal for submission on yes/ok
-            var form = $(e.relatedTarget).closest('form');
-            $(this).find('.modal-footer #confirmCancel').data('form', form);
-        });
-        <!-- Form confirm (yes/ok) handler, submits form -->
-        $('#confirmCancel').find('.modal-footer #confirmCancel').on('click', function () {
-            $(this).data('form').submit();
-        });
         $('div.alert').not('.alert-important').delay(1000).fadeOut(350);
     </script>
-
-
+    <script src="{{asset('js/modal.js')}}"></script>
 @endsection
