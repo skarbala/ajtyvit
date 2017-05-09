@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-<p>{{var_dump(ends_with(URL::previous(),"new_vacation"))}}</p>
 @endsection
 @section('script')
     <script>

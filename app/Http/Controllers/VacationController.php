@@ -95,10 +95,7 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->cancelVacation();
         flash('Dovolenka uspesne zamietnuta')->success();
-        if (ends_with(URL::previous(), "vacation_administration")) {
-            return $this->admin();
-        }
-        return redirect('/')->with('vacations', Auth::user()->getVacations());
+        return redirect()->back();
     }
 
     public function confirmVacation($id)
@@ -106,10 +103,11 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->confirmVacation();
         flash('Dovolenka uspesne schvalena')->success();
-        if (ends_with(URL::previous(), "vacation_administration")) {
-            return $this->admin();
-        }
-        return redirect('/')->with('vacations', Auth::user()->getVacations());
+        return redirect()->back();
+//        if (ends_with(URL::previous(), "vacation_administration")) {
+//            return $this->admin();
+//        }
+//        return redirect('/')->with('vacations', Auth::user()->getVacations());
 
     }
 
@@ -118,7 +116,8 @@ class VacationController extends Controller
         $vacation = Vacation::find($id);
         $vacation->cancelVacation();
         flash('Dovolenka uspesne stornovana')->success();
-        return redirect('/')->with('vacations', Auth::user()->getVacations());
+        return redirect()->back();
+
     }
 
     /**
