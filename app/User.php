@@ -40,6 +40,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
+    public function title(){
+        return $this->belongsTo('App\Title');
+    }
+
 
     public function getDaysOfVacationLeft(){
         $initialDaysOfVacation = User::getInitialDaysOfVacation($this->birthdate);
