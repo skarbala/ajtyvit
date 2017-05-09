@@ -22,19 +22,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/welcomeNewUser', function () {
+Route::get('welcomeNewUser', function () {
     return view('auth.welcomeNew');
 })->middleware('auth');
 
-Route::get('/new_vacation', 'VacationController@create')->middleware('auth');
+Route::get('new_vacation', 'VacationController@create')->middleware('auth');
 
-Route::post('/new_vacation', 'VacationController@store')->middleware('auth');
+Route::post('new_vacation', 'VacationController@store')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/all_vacations', 'VacationController@index')->middleware('auth');
+Route::get('all_vacations', 'VacationController@index')->middleware('auth');
 
-Route::get('/home', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
 Route::get('debug', function () {
     $provider = \Michalmanko\Holiday\HolidayFactory::createProvider('SK');
@@ -47,4 +47,4 @@ Route::post('declineVacation/{id}','VacationController@declineVacation' )->middl
 Route::post('confirmVacation/{id}','VacationController@confirmVacation' )->middleware('admin');
 Route::post('cancelVacation/{id}','VacationController@cancelVacation' );
 
-Route::get('/vacation_administration','VacationController@admin')->middleware('admin');
+Route::get('vacation_administration','VacationController@admin')->middleware('admin');
