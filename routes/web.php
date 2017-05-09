@@ -48,3 +48,5 @@ Route::post('confirmVacation/{id}','VacationController@confirmVacation' )->middl
 Route::post('cancelVacation/{id}','VacationController@cancelVacation' );
 
 Route::get('vacation_administration','VacationController@admin')->middleware('admin');
+
+Route::get('profile', 'Auth\UserController@show');
