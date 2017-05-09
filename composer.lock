@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d38d621172d8944acc10acbb157806d",
+    "content-hash": "fffe37fa9a928d55358e0cd07558d410",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -941,6 +941,58 @@
                 "php"
             ],
             "time": "2017-03-05T18:23:57+00:00"
+        },
+        {
+            "name": "nuxia/business-day-manipulator",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nuxia/BusinessDayManipulator.git",
+                "reference": "888ef4accf714f5beb74878a35fa515d2894285f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nuxia/BusinessDayManipulator/zipball/888ef4accf714f5beb74878a35fa515d2894285f",
+                "reference": "888ef4accf714f5beb74878a35fa515d2894285f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "intl": "Required to use localized manipulator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nuxia\\BusinessDayManipulator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Johann Saunier",
+                    "email": "johann_27@hotmail.fr"
+                }
+            ],
+            "description": "Business Day Manipulator",
+            "keywords": [
+                "Business Day",
+                "Working Day",
+                "manipulator"
+            ],
+            "time": "2015-03-13T11:02:07+00:00"
         },
         {
             "name": "paragonie/random_compat",

@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
+use Nuxia\BusinessDayManipulator\LocalizedManipulator;
+use Nuxia\BusinessDayManipulator\Manipulator;
 
 class VacationController extends Controller
 {
@@ -34,12 +36,13 @@ class VacationController extends Controller
      */
     public function store(Request $request)
     {
-        $vacationDays = $this->countDaysOfVacation($request->vacation_from, $request->vacation_to);
-
         $this->validate($request, [
             'vacation_from' => 'required',
-            'vacation_to' => 'required|after:vacation_from',
+            'vacation_to' => 'required|after_or_equal:vacation_from',
         ]);
+
+        $vacationDays = $this->countDaysOfVacation($request->vacation_from, $request->vacation_to);
+
 
         if ($vacationDays > Auth::user()->getDaysOfVacationLeft()) {
             return redirect('/new_vacation')->withErrors(['msg' => 'mas malo dovolenky']);
@@ -104,11 +107,6 @@ class VacationController extends Controller
         $vacation->confirmVacation();
         flash('Dovolenka uspesne schvalena')->success();
         return redirect()->back();
-//        if (ends_with(URL::previous(), "vacation_administration")) {
-//            return $this->admin();
-//        }
-//        return redirect('/')->with('vacations', Auth::user()->getVacations());
-
     }
 
     public function cancelVacation($id)
@@ -117,7 +115,6 @@ class VacationController extends Controller
         $vacation->cancelVacation();
         flash('Dovolenka uspesne stornovana')->success();
         return redirect()->back();
-
     }
 
     /**
@@ -127,10 +124,11 @@ class VacationController extends Controller
      */
     public function countDaysOfVacation($vacation_from, $vacation_to)
     {
-        if ($vacation_from == $vacation_to) {
-            return 1;
-        }
-        return Carbon::parse($vacation_to)->diffInDays(Carbon::parse($vacation_from));
+        $manipulator = new Manipulator();
+        $manipulator->setStartDate(new \DateTime($vacation_from));
+        $manipulator->setEndDate(new \DateTime($vacation_to));
+
+        return  $manipulator->getBusinessDays();
     }
 
     public function admin()
