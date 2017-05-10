@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
                                 <button type="submit" class="btn btn-default btn-block btn-lg">
-                                    prihlasit
+                                    prihlásiť
                                 </button>
 
                                 {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
                                 <a class="btn btn-danger btn-block" href="{{ url('/') }}">
-                                    zrusit
+                                    zrušiť
                                 </a>
                             </div>
                         </div>

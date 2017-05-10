@@ -6,7 +6,7 @@
         <div class="row" style="margin-top: 30px">
             <div class="col-md-5 col-md-offset-1">
                 @if ($vacations->isEmpty())
-                    <h4 style="margin-top: 0px">Zatiaľ nemáš žiadnu žiadosť, <a href="{{url('new_vacation')}}">naplanuj si</a></h4>
+                    <h4 style="margin-top: 0px">Zatiaľ nemáš žiadnu žiadosť, <a href="{{url('new_vacation')}}">naplánuj si</a></h4>
                 @else
                     <h4 style="margin-bottom: 20px;margin-top: 0px">Najnovšie žiadosti o dovolenku</h4>
                     @include('partials.vacation.table', ['vacations' => $vacations])
