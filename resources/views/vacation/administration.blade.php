@@ -12,7 +12,7 @@
                 <th>Meno</th>
                 <th>Od</th>
                 <th>do</th>
-                <th>pocet dni</th>
+                <th>počet dní</th>
                 <th>stav</th>
                 <th></th>
             </thead>
@@ -28,13 +28,13 @@
                         <form method="POST" action="{{ url('confirmVacation', $vacation->id) }}" accept-charset="UTF-8">
                             {{ csrf_field() }}
                             <a class="btn btn-success" type="button" data-toggle="modal" data-target="#confirmVacation" data-title="Delete User" data-message="Naozaj stornovat ziadost ?">
-                                    schvalit
+                                    schváliť
                                 </a>
                         </form>
                         <form method="POST" action="{{ url('declineVacation', $vacation->id) }}" accept-charset="UTF-8">
                             {{ csrf_field() }}
                             <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirmDecline" data-title="Delete User" data-message="Naozaj stornovat ziadost ?">
-                                    zamietnut
+                                    zamietnuť
                                 </a>
                         </form>
                     </td>
@@ -50,7 +50,10 @@ form {
     display: inline-block;
 }
 </style>
-@include('vacation.modal.decline') @include('vacation.modal.confirm') @endsection @section('script')
+@include('vacation.modal.decline')
+@include('vacation.modal.confirm')
+@endsection
+@section('script')
 <script type="text/javascript">
 $('div.alert').not('.alert-important').delay(1000).fadeOut(350);
 </script>

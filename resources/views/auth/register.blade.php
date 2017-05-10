@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    Registracia
+    Registrácia
 @stop
 @section('content')
 <div class="container">
@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Heslo este raz</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Heslo ešte raz</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -111,7 +111,7 @@
                         </div>
                          <div class="form-group">
                              <div class="col-md-6 col-md-offset-4">
-                                <a class="btn btn-danger btn-block" href="{{ url('/') }}">zrusit</a>
+                                <a class="btn btn-danger btn-block" href="{{ url('/') }}">zrušiť</a>
                             </div>
                         </div>
                     </form>

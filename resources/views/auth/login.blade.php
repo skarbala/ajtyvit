@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    Prihlasenie
+    Prihlásenie
 @stop
 @section('content')
     <div class="container">

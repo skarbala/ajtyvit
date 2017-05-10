@@ -6,8 +6,8 @@
     </div>
      <div class="col-md-4">
          <ul>
-             <li><a class="btn btn-default btn-lg btn-block" href="{{ route('login') }}">prihlasit</a></li>
-             <li><a class="btn btn-default btn-lg btn-block" href="{{ route('register') }}">registrovat</a></li>
+             <li><a class="btn btn-default btn-lg btn-block" href="{{ route('login') }}">prihlásiť</a></li>
+             <li><a class="btn btn-default btn-lg btn-block" href="{{ route('register') }}">registrovať</a></li>
          </ul>
     </div>
  </div>
