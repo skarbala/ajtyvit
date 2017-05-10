@@ -44,24 +44,20 @@
             text-transform: uppercase;
         }
 
-        .navbar-default .navbar-nav > li > a:hover, tbody a:hover {
+        .navbar-default .navbar-nav > li > a:hover, tbody a:hover, a:hover {
             text-decoration: none;
             color: #002060;
         }
 
-        tbody a {
+        tbody a, a {
             color: #cd2c77;
-            font-weight: 600;
+            /*font-weight: 600;*/
         }
         .table > tbody > tr > td {
             vertical-align: middle;
             text-align: center;
 
         }
-
-        /*form {*/
-            /*display: inline-block;*/
-        /*}*/
 
         .table > thead > tr > th {
             text-align: center;
