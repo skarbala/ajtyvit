@@ -19,20 +19,7 @@ class Addtitletable extends Migration
             $table->string('uivalue');
         });
 
-        DB::table('titles')->insert(
-        array(
-                array(
-                    'id' =>'1',
-                    'description' => 'inzinier',
-                    'uivalue' => 'Ing',
-                ),
-                array(
-                    'id'=>'2',
-                    'description' => 'magister',
-                    'uivalue' => 'Mgr',
-                )
-            )
-        );
+
     }
 
     /**

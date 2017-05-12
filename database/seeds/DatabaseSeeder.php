@@ -12,5 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(AddFreeDaysSeeder::class);
+         $this->call(TitleSeeder::class);
+         $this->call(VacationStatusSeeder::class);
     }
 }
