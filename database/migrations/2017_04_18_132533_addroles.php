@@ -20,20 +20,7 @@ class Addroles extends Migration
             $table->string('description');
         });
 
-        DB::table('roles')->insert(
-            array(
-                array(
-                    'id' =>'1',
-                    'description' => 'pouzivatel',
-                    'role' => 'USER',
-                ),
-                array(
-                    'id'=>'2',
-                    'description' => 'administrator',
-                    'role' => 'ADMIN',
-                )
-            )
-        );
+
     }
 
     /**

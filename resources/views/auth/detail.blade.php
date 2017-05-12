@@ -8,13 +8,16 @@
         <hr>
         <div class="row">
             <form action="" class="form-horizontal">
-                <div class="form-group">
-                    <label for="name" class="col-md-4 control-label">Titul</label>
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="vacation_from"
-                               value="{{ Auth::user()->title->uivalue}}" disabled>
+                @if(Auth::user()->title)
+                    <div class="form-group">
+                        <label for="name" class="col-md-4 control-label">Titul</label>
+                        <div class="col-md-6">
+                            <input id="name" type="text" class="form-control" name="vacation_from"
+                                   value="{{Auth::user()->title->uivalue}}
+                                           " disabled>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="form-group">
                     <label for="name" class="col-md-4 control-label">Meno</label>
                     <div class="col-md-6">
@@ -44,5 +47,5 @@
                     </div>
                 </div>
             </form>
-    </div>
+        </div>
 @endsection

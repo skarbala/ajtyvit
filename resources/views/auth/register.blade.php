@@ -12,8 +12,8 @@
                             <label for="title" class="col-md-4 control-label">Titul</label>
 
                             <div class="col-md-6">
-                                <select id="title" type="select" class="form-control" name="title" value="{{ old('title') }}" required>
-
+                                <select id="title" type="select" class="form-control" name="title" value="{{ old('title') }}">
+                                    <option></option>
                                     @foreach($titles as $title)
                                          <option value="{{$title->id}}">{{$title->uivalue}}</option>
                                      @endforeach

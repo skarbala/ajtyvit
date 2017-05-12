@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
          $this->call(AddFreeDaysSeeder::class);
          $this->call(TitleSeeder::class);
          $this->call(VacationStatusSeeder::class);
+         $this->call(RoleSeeder::class);
     }
 }

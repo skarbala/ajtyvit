@@ -15,11 +15,16 @@ class TitleSeeder extends Seeder
             array(
                 array(
                     'id' =>'1',
+                    'description' => 'nezadane',
+                    'uivalue' => '',
+                ),
+                array(
+                    'id' =>'2',
                     'description' => 'inzinier',
                     'uivalue' => 'Ing',
                 ),
                 array(
-                    'id'=>'2',
+                    'id'=>'3',
                     'description' => 'magister',
                     'uivalue' => 'Mgr',
                 )
