@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FreeDays;
 use App\Vacation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,12 +14,13 @@ use Nuxia\BusinessDayManipulator\Manipulator;
 
 class VacationController extends Controller
 {
-
+    public $freeDays;
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function index()
     {
         return view('vacation.list')->with('vacations', Auth::user()->getVacations());
@@ -127,32 +129,17 @@ class VacationController extends Controller
      */
     public function countDaysOfVacation($vacation_from, $vacation_to)
     {
-        $holidays = [
-            new DatePeriod(new \DateTime('2017-12-24'), new \DateTime('2017-12-26')),
-            new DatePeriod(new \DateTime('2018-12-24'), new \DateTime('2018-12-26')),
-        ];
-
-        $freeDays = [
-            new \DateTime('2017-01-01'),
-            new \DateTime('2017-01-06'),
-            new \DateTime('2017-04-14'),
-            new \DateTime('2017-04-17'),
-            new \DateTime('2017-05-01'),
-            new \DateTime('2017-05-08'),
-            new \DateTime('2017-07-05'),
-            new \DateTime('2017-08-29'),
-            new \DateTime('2017-09-01'),
-            new \DateTime('2017-09-15'),
-            new \DateTime('2017-11-01'),
-            new \DateTime('2017-11-17'),
-        ];
+        $freedays =[];
+        foreach (FreeDays::all() as $freeday){
+            array_push($freedays, new \DateTime($freeday->date));
+        }
 
         $freeWeekDays = [
             Manipulator::SATURDAY,
             Manipulator::SUNDAY
         ];
 
-        $manipulator = new Manipulator($freeDays, $freeWeekDays, $holidays);
+        $manipulator = new Manipulator($freedays, $freeWeekDays, $holidays);
 
 
         $manipulator->setStartDate(new \DateTime($vacation_from));
@@ -165,6 +152,10 @@ class VacationController extends Controller
     {
         $vacation = new Vacation();
         return view('vacation.administration')->with('vacations', $vacation->getSubmittedVacations());
+    }
+
+    public function freeDays(){
+        return view('freedays')->with('freedays', FreeDays::all());
     }
 
 }

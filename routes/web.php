@@ -35,7 +35,7 @@ Auth::routes();
 Route::get('all_vacations', 'VacationController@index')->middleware('auth');
 
 Route::get('home', 'HomeController@index');
-
+Route::get('debug', 'VacationController@freeDays');
 
 Route::get('vacation_detail/{id}', ['uses' =>'VacationController@show']);
 
