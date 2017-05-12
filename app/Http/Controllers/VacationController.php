@@ -129,9 +129,9 @@ class VacationController extends Controller
      */
     public function countDaysOfVacation($vacation_from, $vacation_to)
     {
-        $freedays =[];
-        foreach (FreeDays::all() as $freeday){
-            array_push($freedays, new \DateTime($freeday->date));
+        $free_days =[];
+        foreach (FreeDays::all() as $free_day){
+            array_push($free_days, new \DateTime($free_day->date));
         }
 
         $freeWeekDays = [
@@ -139,7 +139,7 @@ class VacationController extends Controller
             Manipulator::SUNDAY
         ];
 
-        $manipulator = new Manipulator($freedays, $freeWeekDays, $holidays);
+        $manipulator = new Manipulator($free_days, $freeWeekDays);
 
 
         $manipulator->setStartDate(new \DateTime($vacation_from));
@@ -152,10 +152,6 @@ class VacationController extends Controller
     {
         $vacation = new Vacation();
         return view('vacation.administration')->with('vacations', $vacation->getSubmittedVacations());
-    }
-
-    public function freeDays(){
-        return view('freedays')->with('freedays', FreeDays::all());
     }
 
 }
