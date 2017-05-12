@@ -36,10 +36,6 @@ Route::get('all_vacations', 'VacationController@index')->middleware('auth');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('debug', function () {
-    $provider = \Michalmanko\Holiday\HolidayFactory::createProvider('SK');
-    return $holidays = $provider->getHolidays(new \DateTime('2017-05-01'));
-});
 
 Route::get('vacation_detail/{id}', ['uses' =>'VacationController@show']);
 
