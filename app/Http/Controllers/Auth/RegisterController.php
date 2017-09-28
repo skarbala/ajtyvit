@@ -84,6 +84,7 @@ class RegisterController extends Controller
             'birthdate' => $data['birthdate'],
             'title_id' => $data['title'],
             'days_of_vacation_left' => User::getInitialDaysOfVacation($data['birthdate']),
+            'role_id'=>$data['role'],
         ]);
     }
 

@@ -101,6 +101,21 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <label for="title" class="col-md-4 control-label">Rola</label>
+
+                            <div class="col-md-6">
+                                <select id="title" type="select" class="form-control" name="role" value="{{ old('role') }}">
+                                    <option value="1">User</option>
+                                    <option value="2">Admin</option>
+                                </select>
+                                @if ($errors->has('title'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
